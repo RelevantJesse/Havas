@@ -6,7 +6,7 @@
 <head runat="server">
     <title></title>
     <link rel="stylesheet" href="Content/bootstrap.css" />
-    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css"/>
     <script src="Scripts/bootstrap.js"></script>
     <script src="Scripts/jquery-1.9.1.js"></script>
     <script src="Scripts/jquery-ui-1.11.4.js"></script>
@@ -43,7 +43,7 @@
       return split( term ).pop();
     }
  
-    $( "#tags" )
+    $( "#Station" )
       // don't navigate away from the field on tab when selecting an item
       .bind( "keydown", function( event ) {
         if ( event.keyCode === $.ui.keyCode.TAB &&
@@ -87,14 +87,17 @@
         </nav>
         <br />
         <div class="form-group col-md-6">
-            <label for="tags">Tag programming languages: </label>
-            <input id="tags" class="form-control" />
+            <label for="txtStation">Station: </label>
+            <input id="txtStation" class="form-control" runat="server" />
         </div>
         <div class="form-group col-md-6">
-            <label for="tags">Tag programming languages: </label>
-            <input id="tags" class="form-control" />
+            <label for="txtClient">Client: </label>
+            <input id="txtClient" class="form-control" runat="server" />
         </div>
-
+        
+        <div class="form-group col-md-12">
+            <asp:Button ID="btnSearch" runat="server" Text="Search" CssClass="btn btn-primary pull-right" />
+        </div>
         <asp:GridView ID="grdMediaDetails" runat="server" CssClass="table table-hover table-striped" AllowSorting="True" AutoGenerateColumns="False" OnSorting="grdMediaDetails_Sorting">
             <Columns>
                 <asp:BoundField DataField="ModId" HeaderText="ID" Visible="false" />

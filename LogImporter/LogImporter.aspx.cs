@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Data;
 using System.IO;
+using System.Text;
 using Microsoft.VisualBasic.FileIO;
 
 namespace LogImporter
@@ -30,7 +32,26 @@ namespace LogImporter
             if (!IsPostBack)
             {
                 SetOriginalData();
+                PopulateAutoComplete();
             }
+        }
+
+        private void PopulateAutoComplete()
+        {
+            List<string> tempString = new List<string>();
+            tempString.Add("Hello");
+            tempString.Add("World");
+
+            StringBuilder sb = new StringBuilder();
+            sb.Append("<script>");
+            sb.Append("var stations = [");
+            foreach (string str in tempString)
+            {
+                sb.Append("testArray.push('" + str + "');");
+            }
+            sb.Append("</script>");
+
+            ClientScript.RegisterStartupScript(this.GetType(), "TestArrayScript", sb.ToString());
         }
 
         private void SetOriginalData()
